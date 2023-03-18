@@ -21,6 +21,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -61,28 +62,8 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                db.collection("users")
-                        .whereEqualTo("emailUser", emailUser)
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                res[0] = task.getResult().isEmpty();
-                                Log.d("email User", "res0 " + res[0]);
-                            }
-                        });
+                Query checkEmail = db.collection("users").whereEqualTo("emailUser",emailUser);
 
-                db.collection("users")
-                        .whereEqualTo("numUser", numUser)
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
-                                task.getResult().isEmpty();
-
-                            }
-                        });
 
 
                 db.collection("users")
