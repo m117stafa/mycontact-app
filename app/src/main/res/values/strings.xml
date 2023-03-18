@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">myContact</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="numero_telephone">Numero telephone</string>
+    <string name="inscrit">Inscrit</string>
+    <string name="inscription">Inscription</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prenom</string>
+    <string name="se_connecter">Se connecter</string>
+</resources>
