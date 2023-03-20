@@ -14,9 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5sp"
         android:gravity="center"
-        android:text="Add new Contact"
+        android:text="Ajouter neauveu contact"
         android:textSize="30sp"
         android:textStyle="bold" />
+
 
     <LinearLayout
         android:layout_width="match_parent"

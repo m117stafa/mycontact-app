@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText editTextEmailLogin, editTextMotpassLogin;
     Button loginButton;
     TextView textInscription;
+    ProgressBar progressBarLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextMotpassLogin = findViewById(R.id.motpass);
         loginButton = findViewById(R.id.btn_se_connecter);
         textInscription = findViewById(R.id.text_inscri);
+        progressBarLoading = findViewById(R.id.progress_cercle);
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 final FirebaseFirestore db = FirebaseFirestore.getInstance();
+                progressBarLoading.setVisibility(View.VISIBLE);
                 Log.d(TAG, "onClick: ----- 9bal db collection");
                 Log.d(TAG, "onClick: -------" + emailLogin + "  " + motpassLogin);
                 db.collection("users").whereEqualTo("emailUser", emailLogin)
@@ -78,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.d(TAG, "onComplete: " + emailFromDb + " " + motpassFromDb);
                                     if (emailFromDb.equals(emailLogin) && motpassFromDb.equals(motpassLogin)) {
                                         Log.d(TAG, "onComplete: sgsdgggggggggggggggggggg");
+                                        progressBarLoading.setVisibility(View.INVISIBLE);
                                         Toast.makeText(LoginActivity.this, "Vous etes connecte", Toast.LENGTH_SHORT).show();
 
                                         Intent intent = new Intent(LoginActivity.this, ListContactActivity.class);
@@ -87,12 +92,15 @@ public class LoginActivity extends AppCompatActivity {
                                         intent.putExtra("email", (String) doc.get("emailUser"));
                                         intent.putExtra("uid", (String) doc.getId());
                                         startActivity(intent);
-                                    } else {                                         Log.d(TAG, "onComplete: info ghaltin hhh ");
-                                    Toast.makeText(LoginActivity.this, "les informations sont incorrect", Toast.LENGTH_SHORT).show();
-                                    editTextEmailLogin.requestFocus();
-                                    return;
+                                    } else {
+                                        progressBarLoading.setVisibility(View.INVISIBLE);
+                                        Log.d(TAG, "onComplete: info ghaltin hhh ");
+                                        Toast.makeText(LoginActivity.this, "les informations sont incorrect", Toast.LENGTH_SHORT).show();
+                                        editTextEmailLogin.requestFocus();
+                                        return;
                                 }
                                 } else {
+                                    progressBarLoading.setVisibility(View.INVISIBLE);
                                     Toast.makeText(LoginActivity.this, "il ya un problem", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
@@ -101,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
+                                progressBarLoading.setVisibility(View.INVISIBLE);
                                 Toast.makeText(LoginActivity.this, "il ya un problem", Toast.LENGTH_SHORT).show();
                                 return;
                             }

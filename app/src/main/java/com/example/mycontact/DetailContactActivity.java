@@ -3,13 +3,12 @@ package com.example.mycontact;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.ImageView;
 
-public class ProfilActivity extends AppCompatActivity {
+public class DetailContactActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profil);
+        setContentView(R.layout.activity_detail_contact);
     }
 }

@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
             ,editTextMotpass;
     Button buttonInscrit;
     TextView textConnection;
+    ProgressBar progressBarLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         editTextMotpass = findViewById(R.id.motpass_user);
         buttonInscrit = findViewById(R.id.btn_inscrit);
         textConnection = findViewById(R.id.text_connecter);
-
+        progressBarLoading = findViewById(R.id.progress_cercle);
 
 
         buttonInscrit.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"Remplir tous les cases",Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                progressBarLoading.setVisibility(View.VISIBLE);
                 db.collection("users").whereEqualTo("emailUser",emailUser)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -75,6 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onSuccess(DocumentReference documentReference) {
                                                         Log.d("TAG","DocumentSnapshot added with ID: "+ documentReference.getId());
+                                                        progressBarLoading.setVisibility(View.INVISIBLE);
                                                         Toast.makeText(RegisterActivity.this,"Vous etes inscrit maintenant", Toast.LENGTH_SHORT).show();
                                                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                         startActivity(intent);
@@ -82,10 +85,12 @@ public class RegisterActivity extends AppCompatActivity {
                                                 });
                                     }
                                     else {
+                                        progressBarLoading.setVisibility(View.INVISIBLE);
                                         Toast.makeText(RegisterActivity.this,"Compte est deja exist", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                                 else {
+                                    progressBarLoading.setVisibility(View.INVISIBLE);
                                     Toast.makeText(RegisterActivity.this,"il ya un problem", Toast.LENGTH_SHORT).show();
                                 }
                             }
