@@ -48,8 +48,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailContactActivity.class);
 
-                //TODO continue using intent.putExtra to show
-                //data in next page
+
+
+
+                intent.putExtra("nom",listContact.get(holder.getAdapterPosition()).getNomContact());
+                intent.putExtra("prenom",listContact.get(holder.getAdapterPosition()).getPrenomContact());
+                intent.putExtra("phone",listContact.get(holder.getAdapterPosition()).getTelContact());
+                intent.putExtra("email",listContact.get(holder.getAdapterPosition()).getEmailContact());
+                intent.putExtra("service",listContact.get(holder.getAdapterPosition()).getServiceContact());
+                intent.putExtra("image",listContact.get(holder.getAdapterPosition()).getImgUrl());
 
                 context.startActivity(intent);
             }

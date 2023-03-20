@@ -9,18 +9,23 @@ public class Contact {
     private String telContact;
     private String imgUrl;
 
+    private boolean isFavorite;
+
     public Contact() {
 
     }
 
+
+
     public Contact(String nomContact, String prenomContact, String serviceContact,
-                   String emailContact, String telContact, String imgUrl) {
+                   String emailContact, String telContact, String imgUrl, boolean isFavorite) {
         this.nomContact = nomContact;
         this.prenomContact = prenomContact;
         this.serviceContact = serviceContact;
         this.emailContact = emailContact;
         this.telContact = telContact;
         this.imgUrl = imgUrl;
+        this.isFavorite = isFavorite;
     }
 
     public String getNomContact() {
@@ -45,6 +50,14 @@ public class Contact {
 
     public String getImgUrl() {
         return imgUrl;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 
     public void setNomContact(String nomContact) {

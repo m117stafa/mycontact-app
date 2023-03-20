@@ -1,5 +1,7 @@
 package com.example.mycontact.models;
 
+import java.util.ArrayList;
+
 public class User {
 
     private String emailUser;
@@ -8,6 +10,8 @@ public class User {
 
     private String nomUser;
     private String prenomUser;
+
+    private ArrayList<Contact> listContactUser;
 
     public User() {
     }
@@ -20,6 +24,15 @@ public class User {
         this.prenomUser = prenomUser;
     }
 
+    public User(String emailUser, String numUser, String motPass, String nomUser, String prenomUser,ArrayList<Contact> listContactUser) {
+        this.emailUser = emailUser;
+        this.numUser = numUser;
+        this.motPass = motPass;
+        this.nomUser = nomUser;
+        this.prenomUser = prenomUser;
+        this.listContactUser = listContactUser;
+    }
+
     public String getEmailUser() {
         return emailUser;
     }
@@ -30,6 +43,14 @@ public class User {
 
     public String getNumUser() {
         return numUser;
+    }
+
+    public ArrayList<Contact> getListContactUser() {
+        return listContactUser;
+    }
+
+    public void setListContactUser(ArrayList<Contact> listContactUser) {
+        this.listContactUser = listContactUser;
     }
 
     public void setNumUser(String numUser) {
