@@ -43,6 +43,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
         holder.phoneCard.setText(listContact.get(position).getTelContact());
 
+        holder.uidContact.setText(listContact.get(position).getUidContact());
+
+
+
+
+
         holder.recCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +63,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 intent.putExtra("email",listContact.get(holder.getAdapterPosition()).getEmailContact());
                 intent.putExtra("service",listContact.get(holder.getAdapterPosition()).getServiceContact());
                 intent.putExtra("image",listContact.get(holder.getAdapterPosition()).getImgUrl());
+                intent.putExtra("uidContact",listContact.get(holder.getAdapterPosition()).getUidContact());
+
+
 
                 context.startActivity(intent);
             }

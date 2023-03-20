@@ -2,6 +2,7 @@ package com.example.mycontact.models;
 
 public class Contact {
 
+    private String uidContact;
     private String nomContact;
     private String prenomContact;
     private String serviceContact;
@@ -17,7 +18,7 @@ public class Contact {
 
 
 
-    public Contact(String nomContact, String prenomContact, String serviceContact,
+    public Contact(String uidContact,String nomContact, String prenomContact, String serviceContact,
                    String emailContact, String telContact, String imgUrl, boolean isFavorite) {
         this.nomContact = nomContact;
         this.prenomContact = prenomContact;
@@ -26,6 +27,10 @@ public class Contact {
         this.telContact = telContact;
         this.imgUrl = imgUrl;
         this.isFavorite = isFavorite;
+        this.uidContact = uidContact;
+    }
+
+    public Contact(String nomContact, String prenomContact, String serviceContact, String emailContact, String numContact, String imgUrl, boolean b) {
     }
 
     public String getNomContact() {
@@ -54,6 +59,14 @@ public class Contact {
 
     public boolean isFavorite() {
         return isFavorite;
+    }
+
+    public String getUidContact() {
+        return uidContact;
+    }
+
+    public void setUidContact(String uidContact) {
+        this.uidContact = uidContact;
     }
 
     public void setFavorite(boolean favorite) {

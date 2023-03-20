@@ -16,6 +16,8 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     TextView  phoneCard, fullnameCard, rec;
     CardView recCard;
 
+    TextView uidContact;
+
 
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -24,5 +26,6 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         phoneCard = itemView.findViewById(R.id.phoneCard);
         fullnameCard = itemView.findViewById(R.id.fullnameCard);
         recCard = itemView.findViewById(R.id.recCard);
+        uidContact = itemView.findViewById(R.id.uid_contact);
     }
 }

@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                                         intent.putExtra("prenom", (String) doc.get("prenomUser"));
                                         intent.putExtra("num", (String) doc.get("numUser"));
                                         intent.putExtra("email", (String) doc.get("emailUser"));
-                                        intent.putExtra("uid", (String) doc.getId());
+                                        intent.putExtra("uid", doc.getId());
                                         startActivity(intent);
                                     } else {
                                         progressBarLoading.setVisibility(View.INVISIBLE);
