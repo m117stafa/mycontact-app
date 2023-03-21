@@ -46,7 +46,7 @@ public class DetailContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent phoneIntent = new Intent(Intent.ACTION_CALL);
-                phoneIntent.setData((Uri.parse(bundle.getString("phone"))));
+                phoneIntent.setData((Uri.parse((String) phoneProfil.getText())));
                 startActivity(phoneIntent);
             }
         });
