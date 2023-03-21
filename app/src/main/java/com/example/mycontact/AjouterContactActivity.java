@@ -56,7 +56,7 @@ public class AjouterContactActivity extends AppCompatActivity {
                 String imgUrl = "https://i.pravatar.cc/300";
 
                 Contact addedContact = new Contact(nomContact,prenomContact,
-                        serviceContact,emailContact,numContact,imgUrl,false );
+                        serviceContact,emailContact,numContact,imgUrl,true );
 
 
                 progressBarLoading.setVisibility(View.VISIBLE);

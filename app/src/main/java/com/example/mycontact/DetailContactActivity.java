@@ -2,7 +2,10 @@ package com.example.mycontact;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,7 +42,27 @@ public class DetailContactActivity extends AppCompatActivity {
             //profileImage.setImageResource(bundle.getString("image"));
         }
 
+        iconPhonecall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent phoneIntent = new Intent(Intent.ACTION_CALL);
+                phoneIntent.setData((Uri.parse(bundle.getString("phone"))));
+                startActivity(phoneIntent);
+            }
+        });
 
+        iconSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+
+            }
+        });
+
+        //TODO share buttons
+        //TODO finish crud
+        //TODO add favorite
+        //TODO add recommendation
 
     }
 }

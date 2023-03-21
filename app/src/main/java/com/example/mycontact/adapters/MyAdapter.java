@@ -1,21 +1,25 @@
 package com.example.mycontact.adapters;
 
+
+
 import android.content.Context;
 import android.content.Intent;
+
 import android.text.TextUtils;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mycontact.DetailContactActivity;
 import com.example.mycontact.R;
 import com.example.mycontact.models.Contact;
+
 
 import java.util.List;
 
@@ -24,9 +28,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private Context context;
     private List<Contact> listContact;
 
-    public MyAdapter(Context context, List<Contact> listContact) {
+    private String uid;
+
+    public MyAdapter(Context context, List<Contact> listContact, String uid) {
         this.context = context;
         this.listContact = listContact;
+        this.uid = uid;
     }
 
     @NonNull
@@ -44,10 +51,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.phoneCard.setText(listContact.get(position).getTelContact());
 
         holder.uidContact.setText(listContact.get(position).getUidContact());
-
-
-
-
 
         holder.recCard.setOnClickListener(new View.OnClickListener() {
             @Override

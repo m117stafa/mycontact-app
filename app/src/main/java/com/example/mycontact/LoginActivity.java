@@ -45,6 +45,14 @@ public class LoginActivity extends AppCompatActivity {
         progressBarLoading = findViewById(R.id.progress_cercle);
 
 
+        textInscription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,14 +122,6 @@ public class LoginActivity extends AppCompatActivity {
                                 return;
                             }
                         });
-
-                textInscription.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                        startActivity(intent);
-                    }
-                });
 
             }
         });

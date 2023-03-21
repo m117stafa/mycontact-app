@@ -76,15 +76,16 @@ public class ListContactActivity extends AppCompatActivity {
                         if (task.isSuccessful() && !task.getResult().isEmpty()) {
                             for (QueryDocumentSnapshot doc: task.getResult()) {
 
-                                listContact.add(new Contact(doc.getId(),
+                                listContact.add(new Contact(
                                         doc.getString("nomContact"),
                                         doc.getString("prenomContact"),
                                         doc.getString("serviceContact"),
                                         doc.getString("emailContact"),
                                         doc.getString("telContact"),
-                                        "sdfsdgsdg",
-                                        false));
-                                myAdapter = new MyAdapter(ListContactActivity.this,listContact);
+                                        "sdfsdf",
+                                        false,
+                                        doc.getId()));
+                                myAdapter = new MyAdapter(ListContactActivity.this,listContact, uid);
 
                                 recyclerView.setAdapter(myAdapter);
 
